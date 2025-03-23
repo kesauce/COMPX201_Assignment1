@@ -38,6 +38,10 @@ public class Card
         {
             return "King of " + suit;
         }
+        else if(number == 1)
+        {
+            return "Ace of " + suit;
+        }
         else
         {
             return number + " of " + suit;
