@@ -8,7 +8,7 @@ public class CardDraw
     static int NUM_PLAYERS = 10;
     static int NUM_CARDS = 5;
     static int NUM_CARDS_IN_SUIT = 13;
-    static CardLinkedList cardDeck = new CardLinkedList();
+    static CardLinkedList gameDeck = new CardLinkedList();
     static ArrayList<CardLinkedList> playersArrayList = new ArrayList<CardLinkedList>();
 
     public static void main(String []args)
@@ -28,7 +28,9 @@ public class CardDraw
 
     }
 
-    //Creates a standard deck of cards in the provided card linked list
+    /**
+     * Creates one full standard deck of cards to the game deck
+     */
     public static void CreateDeck()
     {
         //Makes an array of suits
@@ -44,14 +46,16 @@ public class CardDraw
                 Card newCard = new Card(i, suit);
 
                 //Add the new card to the list
-                cardDeck.addCard(newCard);
+                gameDeck.addCard(newCard);
             }
         }
 
         System.out.println("Created deck.");
     }
 
-    //Deals 5 random cards to each player and returns a cardlinkedlist 
+    /**
+     * Deals the amount of cards stated to each player in the game
+     */
     public static void Deal()
     {
         //Create a random class
@@ -67,11 +71,11 @@ public class CardDraw
             for(int j = 0; j < NUM_CARDS; j++)
             {
                 //Find a random card from the deck and create a mew card
-                int randomCardIndex = rand.nextInt(cardDeck.getLength());
-                Card randomCard = new Card(cardDeck.getCard(randomCardIndex).getNumber(), cardDeck.getCard(randomCardIndex).getSuit());
+                int randomCardIndex = rand.nextInt(gameDeck.getLength());
+                Card randomCard = new Card(gameDeck.getCard(randomCardIndex).getNumber(), gameDeck.getCard(randomCardIndex).getSuit());
                 
                 //Delete that card from the deck
-                cardDeck.removeCard(randomCard);
+                gameDeck.removeCard(randomCard);
 
                 //Add the card to the player hand
                 playerHand.addCard(randomCard);
@@ -84,7 +88,9 @@ public class CardDraw
         System.out.println("Dealt cards.");
     }
 
-    //Prints out to the terminal all the player cards
+    /**
+     * Prints out the players of the game and their current hand to the terminal
+     */
     public static void DisplayPlayers()
     {
         //Counter
@@ -103,7 +109,11 @@ public class CardDraw
         }
     } 
 
-    //Takes in a player and returns the points they received
+    /**
+     * Takes a player and returns the points they've received with their hand
+     * @param player The player to be calculated
+     * @return An integer value of the player's points
+     */
     public static int CalculatePoints(CardLinkedList player)
     {
         //Make variable
@@ -156,6 +166,9 @@ public class CardDraw
         return points;
     }
 
+    /**
+     * Finds the winner(s) of the round and display their winning hand and points to the terminal
+     */
     public static void CalculateWinner()
     {
         //Variables to store the highest points and the winning player index (defaulting to player 1)

@@ -1,16 +1,25 @@
+/**
+ * The CardLinkedList functions as a linked list and groups Card objects together. Each Card is stored in a Node object.
+ * 
+ * @author Alexis Manosca
+ */
 public class CardLinkedList
 {
-    //Variables
     Node head = null;
 
-    //Methods
-    //Checks if the head of the list has a value
+    /**
+     * Checks if the list is empty
+     * @return A boolean value determining if the list is empty
+     */
     public boolean isEmpty()
     {
         return head == null;
     }
 
-    //Checks how long the list is
+    /**
+     * Checks how long the list is.
+     * @return An integer of the list length
+     */
     public int getLength()
     {
         Node currentNode = head;
@@ -28,7 +37,11 @@ public class CardLinkedList
         return counter;
     }
 
-    //Checks if the given card is in the list
+    /**
+     * Checks if a given card is in the list
+     * @param c The given card to check if it is in the list
+     * @return A boolean value determining if the given card is in the list
+     */
     public boolean hasCard(Card c)
     {
         Node currentNode = head;
@@ -49,7 +62,11 @@ public class CardLinkedList
         return false;
     }
 
-    //Gets the card at the given position in the list
+    /**
+     * Gets the card at the given index
+     * @param target The target index 
+     * @return The card at the target index
+     */
     public Card getCard(int target)
     {
         Node currentNode = head;
@@ -76,6 +93,10 @@ public class CardLinkedList
         
     }
 
+    /**
+     * Adds a new card at the head of the list and adjusts the list accordingly
+     * @param c The new card to add to the list
+     */
     //Adds a new card to the head of the list
     public void addCard(Card c)
     {
@@ -87,7 +108,10 @@ public class CardLinkedList
         head = newNode;
     }
 
-    //Removes the first card in the list that matches the given card without changing the order of the list
+    /**
+     * Removes the first iteration of the given card in the list
+     * @param c The card to be removed
+     */
     public void removeCard(Card c)
     {
         Node currentNode = head;
@@ -124,7 +148,9 @@ public class CardLinkedList
         }
     }
 
-    //Prints the cards in the list
+    /**
+     * Prints the card values of the list on the terminal
+     */
     public void print()
     {
 
@@ -155,14 +181,16 @@ public class CardLinkedList
         System.out.println(result.toString());
     }
 
-    //Inner class node
+    /**
+     * The Node class holds the values of a Card that will be stored in the linked list
+     * 
+     * @author Alexis Manosca
+     */
     public class Node
     {
-        //Variables
         private Card card;
         private Node next;
 
-        //Constructor
         public Node(Card c)
         {
             this.card = c;
